@@ -42,7 +42,7 @@ h1 {
   color: #fff;
 }
 
-/* Carrossel contínuo sem duplicar HTML */
+/* Carrossel contínuo */
 .carousel {
   overflow: hidden;
   width: 100%;
@@ -56,7 +56,6 @@ h1 {
   animation: scroll-left 30s linear infinite;
 }
 
-/* Replicação virtual das imagens */
 .track img {
   width: 160px;
   height: 160px;
@@ -66,28 +65,27 @@ h1 {
   flex-shrink: 0;
 }
 
-/* Aqui vem a mágica do loop contínuo */
-.track::after {
-  content: '';
-  flex: 0 0 auto;
-  width: calc(160px + 15px) * 5; /* Largura de todas as imagens */
-}
-
 /* Animação contínua */
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* metade da track para loop infinito */
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* metade da largura total da track */
+  }
 }
 
 /* Instagram */
 .instagram {
   margin-top: 25px;
 }
+
 .instagram a {
   color: #fff;
   font-size: 14px;
   text-decoration: none;
 }
+
 .instagram a:hover {
   color: #b22222;
 }
@@ -96,6 +94,7 @@ h1 {
 .logo {
   margin-top: 15px;
 }
+
 .logo img {
   width: 70px;
   height: 70px;
