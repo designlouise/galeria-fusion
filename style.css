@@ -42,7 +42,7 @@ h1 {
   color: #fff;
 }
 
-/* Carrossel */
+/* Carrossel contínuo sem duplicar HTML */
 .carousel {
   overflow: hidden;
   width: 100%;
@@ -56,6 +56,7 @@ h1 {
   animation: scroll-left 30s linear infinite;
 }
 
+/* Replicação virtual das imagens */
 .track img {
   width: 160px;
   height: 160px;
@@ -65,17 +66,17 @@ h1 {
   flex-shrink: 0;
 }
 
-/* Efeito contínuo: duplicar conteúdo virtualmente */
+/* Aqui vem a mágica do loop contínuo */
 .track::after {
   content: '';
-  display: block;
-  width: 100%;
+  flex: 0 0 auto;
+  width: calc(160px + 15px) * 5; /* Largura de todas as imagens */
 }
 
 /* Animação contínua */
 @keyframes scroll-left {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* ajuste conforme o número de imagens */
+  100% { transform: translateX(-50%); } /* metade da track para loop infinito */
 }
 
 /* Instagram */
