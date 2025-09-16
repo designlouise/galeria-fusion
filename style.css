@@ -53,7 +53,7 @@ h1 {
 .track {
   display: flex;
   gap: 15px;
-  animation: scroll-left 30s linear infinite;
+  width: max-content; /* evita quebra */
 }
 
 .track img {
@@ -65,13 +65,33 @@ h1 {
   flex-shrink: 0;
 }
 
-/* Animação contínua */
+/* Carrossel para a esquerda */
+.carousel.left .track {
+  animation: scroll-left 40s linear infinite;
+}
+
+/* Carrossel para a direita */
+.carousel.right .track {
+  animation: scroll-right 40s linear infinite;
+}
+
+/* Animação esquerda */
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%); /* metade da largura total da track */
+    transform: translateX(-50%); /* desliza metade (já que duplicamos as imagens) */
+  }
+}
+
+/* Animação direita */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 
