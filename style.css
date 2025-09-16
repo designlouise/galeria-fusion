@@ -9,6 +9,7 @@ body, html {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background: #000;
 }
 
 .background {
@@ -46,16 +47,13 @@ h1 {
   overflow: hidden;
   width: 100%;
   margin: 20px 0;
+  position: relative;
 }
 
 .track {
   display: flex;
   gap: 15px;
   animation: scroll-left 30s linear infinite;
-}
-
-.carousel.right .track {
-  animation: scroll-right 30s linear infinite;
 }
 
 .track img {
@@ -67,15 +65,17 @@ h1 {
   flex-shrink: 0;
 }
 
-/* Animações */
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Efeito contínuo: duplicar conteúdo virtualmente */
+.track::after {
+  content: '';
+  display: block;
+  width: 100%;
 }
 
-@keyframes scroll-right {
+/* Animação contínua */
+@keyframes scroll-left {
   0% { transform: translateX(0); }
-  100% { transform: translateX(50%); }
+  100% { transform: translateX(-50%); } /* ajuste conforme o número de imagens */
 }
 
 /* Instagram */
